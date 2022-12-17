@@ -5,7 +5,13 @@ on: push
 jobs:
   super-lint:
     name: Lint code base
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+        os: [macos-latest, windows-latest, ubuntu-18.04]
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
