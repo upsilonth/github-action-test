@@ -25,5 +25,5 @@ jobs:
         if: needs.generate-variable.outputs.boolean-var
         run: echo "boolean-value has value"
       - name: boolean-var has no value  
-        if: ! needs.generate-variable.outputs.boolean-value
+        if: !needs.generate-variable.outputs.boolean-value
         run: echo "boolean-value has no value"
