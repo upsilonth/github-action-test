@@ -9,19 +9,21 @@ jobs:
     runs-on: ubuntu-latest 
     name: generate variable
     outputs:
-      boolean-value: ${{ steps.generate-variable.outputs.boolean-value }}
+      boolean-var: ${{ steps.generate-variable.outputs.boolean-var }}
     steps:
       - name: generate variable
       - id: generate-variable
       - run: |
-          echo 'boolean-value=true' >> $GITHUB_OUTPUT
+          echo 'boolean-var=true' >> $GITHUB_OUTPUT
 
 
   check-value:
     needs: generate-variable
     runs-on: ubuntu-latest
     steps:
-      - if: ${{ needs.generate-variable.outputs.boolean-value }}
-          echo "boolean-value has value"
-      - if: ${{ ! needs.generate-variable.outputs.boolean-value }}
-          echo "boolean-value has no value"
+      - name: boolean-var has value
+        if: ${{ needs.generate-variable.outputs.boolean-var }}
+        run: echo "boolean-value has value"
+      - name: boolean-var has no value  
+        if: ${{ ! needs.generate-variable.outputs.boolean-value }}
+        run: echo "boolean-value has no value"
