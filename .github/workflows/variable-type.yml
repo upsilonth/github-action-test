@@ -21,9 +21,14 @@ jobs:
     needs: generate-variable
     runs-on: ubuntu-latest
     steps:
+      - name: print boolean-var value
+        run: |
+          echo "value: ${{ needs.generate-variable.outputs.boolean-var }}"
+    
       - name: boolean-var has value
-        if: needs.generate-variable.outputs.boolean-var == true
+        if: needs.generate-variable.outputs.boolean-var == 'true'
         run: echo "boolean-value has value"
+        
       - name: boolean-var has no value  
         if: needs.generate-variable.outputs.boolean-value == false
         run: echo "boolean-value has no value"
