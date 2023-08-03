@@ -12,8 +12,8 @@ jobs:
       boolean-var: ${{ steps.generate-variable.outputs.boolean-var }}
     steps:
       - name: generate variable
-      - id: generate-variable
-      - run: |
+        id: generate-variable
+        run: |
           echo 'boolean-var=true' >> $GITHUB_OUTPUT
 
 
