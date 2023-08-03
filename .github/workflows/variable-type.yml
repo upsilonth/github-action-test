@@ -35,7 +35,7 @@ jobs:
 
       - name: $\{\{ needs.generate-variable.outputs.boolean-value \}\} == false  
         if: ${{ needs.generate-variable.outputs.boolean-value }} == false
-        run: echo "$\{\{ needs.generate-variable.outputs.boolean-value \}\} == false, value: ${{ needs.generate-variable.outputs.boolean-value }}"
+        run: echo "$\{\{ needs.generate-variable.outputs.boolean-value \}\} == false, ${{ needs.generate-variable.outputs.boolean-value }}"
 
       - name: compare true with false 
         if: true == false
