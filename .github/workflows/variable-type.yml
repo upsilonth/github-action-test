@@ -29,9 +29,13 @@ jobs:
         if: needs.generate-variable.outputs.boolean-var == 'true'
         run: echo "boolean-value has value"
         
-      - name: boolean-var has no value  
+      - name: needs.generate-variable.outputs.boolean-value == false  
         if: needs.generate-variable.outputs.boolean-value == false
         run: echo "boolean-value has no value"
+
+      - name: $\{\{ needs.generate-variable.outputs.boolean-value \}\} == false  
+        if: ${{ needs.generate-variable.outputs.boolean-value }} == false
+        run: echo "$\{\{ needs.generate-variable.outputs.boolean-value \}\} == false"
 
       - name: compare true with false 
         if: true == false
