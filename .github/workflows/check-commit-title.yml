@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Check commit title
     steps:
+      - uses: actions/checkout@v3
       - name: Check commit tile
         id: check-commit-title
         run: |
