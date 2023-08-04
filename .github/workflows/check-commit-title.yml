@@ -19,3 +19,4 @@ jobs:
             echo 'need-publish=false' >> $GITHUB_OUTPUT
             echo "'[no-publish]' is found in commit title, no need to publish Docker image"
           fi
+
