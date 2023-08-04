@@ -1,7 +1,6 @@
 name: variable-test
 
-on: 
-  push:
+on:
   workflow_dispatch:
 
 jobs:
