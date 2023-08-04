@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest 
     name: generate variable
     outputs:
-      boolean-var: ${{ steps.generate-variable.outputs.boolean-var }}
+      boolean-var: ${{ steps.generate-variable.outputs.boolean-var == 'true'}}
     steps:
       - name: generate variable
         id: generate-variable
@@ -48,4 +48,4 @@ jobs:
     needs: generate-variable
     uses: ./.github/workflows/reusable.yml
     with:
-      input-var: ${{ needs.generate-variable.outputs.boolean-var == 'false' }}
+      input-var: ${{ needs.generate-variable.outputs.boolean-var }}
