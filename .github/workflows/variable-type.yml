@@ -16,7 +16,6 @@ jobs:
         run: |
           echo 'boolean-var=true' >> $GITHUB_OUTPUT
 
-
   check-value:
     needs: generate-variable
     runs-on: ubuntu-latest
@@ -44,3 +43,9 @@ jobs:
       - name: compare true with false 
         if: true == false
         run: echo "true equals to false"
+        
+  check-value-on-reusable-workflow:
+    needs: generate-variable
+    uses: ./.github/workflows/reusable.yml
+    with:
+      ${{ jobs.generate-variable.outputs.boolean-var }}
