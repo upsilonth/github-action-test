@@ -1,0 +1,20 @@
+name: reusable-workflow
+
+on:
+  workflow_call:
+    inputs:
+      input-var:
+        required: true
+        type: boolean
+
+jobs:
+  check-input:
+    name: check input job
+    runs-on: ubuntu-latest
+    steps:
+      - name: check {{ inputs.input-var }}
+        if: ${{ inputs.input-var }}
+        run: echo "$\{\{ inputs.input-var \}\} is true"
+      - name: check inputs.input-var
+        if: inputs.input-var
+        run: echo "inputs.input-var is true"
