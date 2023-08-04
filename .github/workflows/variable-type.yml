@@ -48,4 +48,4 @@ jobs:
     needs: generate-variable
     uses: ./.github/workflows/reusable.yml
     with:
-      ${{ jobs.generate-variable.outputs.boolean-var }}
+      ${{ needs.generate-variable.outputs.boolean-var }}
