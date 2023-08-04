@@ -21,4 +21,3 @@ jobs:
             echo 'need-publish=true' >> $GITHUB_OUTPUT
             echo "Need to publish Docker image: "
           fi
-
