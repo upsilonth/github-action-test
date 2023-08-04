@@ -5,7 +5,7 @@ on:
     inputs:
       input-var:
         required: true
-        type: string
+        type: boolean
 
 jobs:
   check-input:
