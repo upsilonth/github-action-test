@@ -12,6 +12,8 @@ jobs:
       - name: Check commit tile
         id: check-commit-title
         run: |
+          commit_message=$(git show -s --format='%s' | grep '\[test\]')
+          echo "commit: $commit_message"
           if ! git show -s --format='%s' | grep '\[no-publish\]'; then
             echo 'need-publish=true' >> $GITHUB_OUTPUT
             echo "Need to publish Docker image"
