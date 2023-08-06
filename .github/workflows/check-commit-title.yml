@@ -1,7 +1,7 @@
 name: check-commit-title
 
 on:
-  push:
+  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -10,10 +10,14 @@ jobs:
     name: Check commit title
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
       - name: Check commit tile
         id: check-commit-title
         run: |
-          echo $(git show -s --format='%s' | grep '\[no-publish\]')
+          echo "title of the latest commit: $(git show -s --format='%s')"
+          echo "title of grep of the latest commit: $(git show -s --format='%s' | grep '\[no-publish\]')"
+          echo "title of the second latest commit: $(git show -s --format="%B" HEAD^2)"
           if git show -s --format='%s' | grep '\[no-publish\]'; then
             echo 'need-publish=false' >> $GITHUB_OUTPUT
             echo "'[no-publish]' is found in commit title, no need to publish Docker image"
@@ -21,3 +25,4 @@ jobs:
             echo 'need-publish=true' >> $GITHUB_OUTPUT
             echo "Need to publish Docker image: "
           fi
+ 
