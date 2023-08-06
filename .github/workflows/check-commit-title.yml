@@ -15,7 +15,7 @@ jobs:
         run: |
           echo "title of the latest commit: $(git show -s --format='%s')"
           echo "title of grep of the latest commit: $(git show -s --format='%s' | grep '\[no-publish\]')"
-          echo "title of the second latest commit: $(git show -s --format='%s' HEAD~1)"
+          echo "title of the second latest commit: $(git show -s --format="%B" HEAD^2)"
           if git show -s --format='%s' | grep '\[no-publish\]'; then
             echo 'need-publish=false' >> $GITHUB_OUTPUT
             echo "'[no-publish]' is found in commit title, no need to publish Docker image"
